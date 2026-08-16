@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1Mayoq — Vaqtingizga yorug'lik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="beam-layer" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wordmark">
+    <span class="wordmark-glyph">1</span><span class="wordmark-text">Mayoq</span>
+  </div>
+  <div class="date-nav">
+    <button type="button" class="date-arrow" id="prevDay" aria-label="Oldingi kun">‹</button>
+    <input type="date" id="headerDate" class="date-input">
+    <button type="button" class="date-arrow" id="nextDay" aria-label="Keyingi kun">›</button>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- HERO: kunlik nisbat mayoq nuri sifatida -->
+  <section class="hero" id="heroSection">
+    <div class="hero-copy">
+      <p class="eyebrow">Bugungi yorug'lik</p>
+      <h1 id="heroHeadline">Kuningiz hali boshlanmadi</h1>
+      <p class="hero-sub" id="heroSub">Birinchi vazifangizni qo'shing — mayoq yona boshlaydi.</p>
+    </div>
+    <div class="beam-gauge" aria-hidden="true">
+      <svg viewBox="0 0 240 240" class="gauge-svg">
+        <circle cx="120" cy="120" r="100" class="gauge-track"/>
+        <circle cx="120" cy="120" r="100" class="gauge-fill" id="gaugeFill"/>
+      </svg>
+      <div class="gauge-center">
+        <span class="gauge-percent" id="gaugePercent">—</span>
+        <span class="gauge-label">foydali</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VAZIFA QO'SHISH -->
+  <section class="panel add-panel">
+    <h2 class="panel-title">Vazifa qo'shish</h2>
+    <form id="taskForm" class="task-form">
+      <input type="text" id="taskTitle" placeholder="Nima qilyapsiz?" required autocomplete="off">
+      <div class="form-row">
+        <label class="time-field">
+          <span>Boshlanish</span>
+          <input type="time" id="taskStart" required>
+        </label>
+        <label class="time-field">
+          <span>Tugash</span>
+          <input type="time" id="taskEnd" required>
+        </label>
+      </div>
+      <div class="category-select" role="radiogroup" aria-label="Kategoriya">
+        <button type="button" class="cat-btn cat-useful active" data-cat="useful">Foydali</button>
+        <button type="button" class="cat-btn cat-neutral" data-cat="neutral">Neytral</button>
+        <button type="button" class="cat-btn cat-useless" data-cat="useless">Foydasiz</button>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Qo'shish</button>
+      <button type="button" class="cancel-btn" id="cancelEdit" hidden>Bekor qilish</button>
+    </form>
+  </section>
+
+  <!-- KUNLIK RO'YXAT -->
+  <section class="panel list-panel">
+    <div class="panel-header">
+      <h2 class="panel-title">Bugungi vazifalar</h2>
+      <span class="task-count" id="taskCount">0 ta</span>
+    </div>
+    <ul class="task-list" id="taskList">
+      <li class="empty-state" id="emptyState">
+        <span class="empty-glyph">○</span>
+        <p>Hali vazifa yo'q. Mayoq kutmoqda.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- HAFTALIK TENDENSIYA -->
+  <section class="panel chart-panel">
+    <h2 class="panel-title">Haftalik tendensiya</h2>
+    <canvas id="weeklyChart" height="220"></canvas>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>1Mayoq — hayotingizdagi noaniqlikni yorituvchi mayoq. Neytron g'oyasidan ilhomlangan, mustaqil davomi.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<!-- firebase-config.js hozircha ulanmagan (MVP localStorage bilan ishlaydi).
+     Firebase to'liq sozlangach, bu qatorni oching:
+     <script type="module" src="firebase-config.js"></script> -->
+<script src="app.js"></script>
+</body>
+</html>
